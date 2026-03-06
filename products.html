@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | VISION International Construction</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s all ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Card hover */
+    .product-card {
+      transition: all 0.4s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(255,24,23,0.4);
+    }
+    .card-image-wrapper img {
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .card-image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+      padding: 10px 25px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Back to top */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--primary); color: white;
+      border: none; border-radius: 50%;
+      width: 45px; height: 45px;
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    #backToTop:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body class="products-page">
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="img/Secondary Logo.png" alt="Vision"></a>
+      </div>
+      <button class="menu-toggle">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-slideshow">
+      <div class="slide" style="background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80');"></div>
+    </div>
+    <div class="hero-content reveal">
+      <p>QUALITY MATERIALS & EXPERTISE</p>
+      <h1>Our Products & Services</h1>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="container">
+    <div class="filter-wrapper reveal" style="display:flex;justify-content:center;gap:15px;margin-bottom:40px;">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="materials">Materials</button>
+      <button class="filter-btn" data-filter="supplies">Supplies</button>
+      <button class="filter-btn" data-filter="services">Services</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="grid" id="products-grid">
+  <!-- Steel -->
+  <div class="card reveal product-card" data-category="supplies">
+    <div class="card-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?q=80" class="card-image" alt="Steel">
+    </div>
+    <div class="card-content">
+      <span class="card-meta">Supplies</span>
+      <h3 class="card-title">Structural Steel</h3>
+      <p>High-strength steel for modern construction frameworks.</p>
+      <a href="product-details.html?id=steel" class="btn">View Details</a>
+    </div>
+  </div>
+
+  <!-- Concrete -->
+  <div class="card reveal product-card" data-category="materials">
+    <div class="card-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1533044309907-0fa3413da946?q=80" class="card-image" alt="Concrete">
+    </div>
+    <div class="card-content">
+      <span class="card-meta">Materials</span>
+      <h3 class="card-title">Premium Concrete</h3>
+      <p>Ready-mix concrete with superior compression strength.</p>
+      <a href="product-details.html?id=concrete" class="btn">View Details</a>
+    </div>
+  </div>
+
+  <!-- Installing -->
+  <div class="card reveal product-card" data-category="services">
+    <div class="card-image-wrapper">
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80" class="card-image" alt="Installation Service">
+    </div>
+    <div class="card-content">
+      <span class="card-meta">Services</span>
+      <h3 class="card-title">Professional Installation</h3>
+      <p>Expert installation services for all construction materials and systems.</p>
+      <a href="product-details.html?id=installation" class="btn">View Details</a>
+    </div>
+  </div>
+
+  <!-- Vision Sports -->
+  <a href="vision-category.html?category=sports" class="card product-card-link reveal" data-category="materials">
+    <div class="card product-card">
+      <div class="card-image-wrapper">
+        <img src="/placeholder.svg?height=250&width=300" alt="Vision Sports" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="card-meta">Materials</span>
+        <h3 class="card-title">Vision Sports</h3>
+        <p>Premium sports flooring and surfaces for athletic facilities, gymnasiums, and recreational centers.</p>
+        <span class="btn">Explore Products →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Vision Care -->
+  <a href="vision-category.html?category=care" class="card product-card-link reveal" data-category="materials">
+    <div class="card product-card">
+      <div class="card-image-wrapper">
+        <img src="/placeholder.svg?height=250&width=300" alt="Vision Care" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="card-meta">Materials</span>
+        <h3 class="card-title">Vision Care</h3>
+        <p>Specialized healthcare flooring solutions for hospitals, clinics, and medical facilities.</p>
+        <span class="btn">Explore Products →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Vision Walls -->
+  <a href="vision-category.html?category=walls" class="card product-card-link reveal" data-category="materials">
+    <div class="card product-card">
+      <div class="card-image-wrapper">
+        <img src="/placeholder.svg?height=250&width=300" alt="Vision Walls" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="card-meta">Materials</span>
+        <h3 class="card-title">Vision Walls</h3>
+        <p>Innovative wall systems and cladding solutions for modern architectural designs.</p>
+        <span class="btn">Explore Products →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Vision Ceiling -->
+  <a href="vision-category.html?category=ceiling" class="card product-card-link reveal" data-category="materials">
+    <div class="card product-card">
+      <div class="card-image-wrapper">
+        <img src="/placeholder.svg?height=250&width=300" alt="Vision Ceiling" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="card-meta">Materials</span>
+        <h3 class="card-title">Vision Ceiling</h3>
+        <p>Premium ceiling systems offering acoustic solutions and design versatility.</p>
+        <span class="btn">Explore Products →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- Vision Floors -->
+  <a href="vision-category.html?category=floors" class="card product-card-link reveal" data-category="materials">
+    <div class="card product-card">
+      <div class="card-image-wrapper">
+        <img src="/placeholder.svg?height=250&width=300" alt="Vision Floors" class="card-image">
+      </div>
+      <div class="card-content">
+        <span class="card-meta">Materials</span>
+        <h3 class="card-title">Vision Floors</h3>
+        <p>Durable flooring solutions including rubber tiles, vinyl, and specialty surfaces.</p>
+        <span class="btn">Explore Products →</span>
+      </div>
+    </div>
+  </a>
+</div>
+
+  <!-- Services Section -->
+  <section style="background: var(--bg-alt); padding: 80px 20px; margin-top: 80px; border-radius: 10px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Installation Services</h2>
+        <p>Professional installation expertise for all your construction needs</p>
+      </div>
+
+      <div class="grid grid-3" style="gap: 2rem;">
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧱</div>
+          <h3 style="border: none;">Material Installation</h3>
+          <p>Precise installation of structural materials, flooring, and finishing surfaces.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚙️</div>
+          <h3 style="border: none;">Systems Installation</h3>
+          <p>Professional setup of HVAC, electrical, plumbing, and utility systems.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🪟</div>
+          <h3 style="border: none;">Window & Door Installation</h3>
+          <p>Expert installation ensuring perfect fit, alignment, and weather-tight sealing.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎨</div>
+          <h3 style="border: none;">Finishing & Fixtures</h3>
+          <p>Installation of interior finishes, fixtures, and architectural details.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔌</div>
+          <h3 style="border: none;">Equipment Installation</h3>
+          <p>Professional installation of specialized equipment and machinery.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">✓</div>
+          <h3 style="border: none;">Quality Assurance</h3>
+          <p>Thorough inspection and testing to ensure all installations meet standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid container">
+      <div><h4>About VISION</h4><p>Leading construction company dedicated to excellence and innovation.</p></div>
+      <div><h4>Quick Links</h4><ul><li><a href="about.html">About Us</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><p>123 Construction Ave, Building City</p><p>info@vision.com | +1 234 567 890</p></div>
+      <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 VISION Construction Co. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="script.js"></script>
+  <script src="interactions.js"></script>
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    reveals.forEach(el => {
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 100) el.classList.add('active');
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+
+  // Filter logic
+const filterBtns = document.querySelectorAll('.filter-btn');
+const productCards = document.querySelectorAll('#products-grid > .card');
+const productCardLinks = document.querySelectorAll('#products-grid > .product-card-link');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+    
+    // Filter regular cards
+    productCards.forEach(card => {
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.style.display = 'block';
+        setTimeout(() => card.classList.add('active'), 100);
+      } else {
+        card.style.display = 'none';
+        card.classList.remove('active');
+      }
+    });
+    
+    // Filter link-wrapped cards
+    productCardLinks.forEach(link => {
+      if (filter === 'all' || link.getAttribute('data-category') === filter) {
+        link.style.display = 'block';
+        setTimeout(() => link.classList.add('active'), 100);
+      } else {
+        link.style.display = 'none';
+        link.classList.remove('active');
+      }
+    });
+  });
+});
+
+
+  // Back to top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

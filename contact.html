@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | VISION Construction</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <style>
+    /* Hero Form Aesthetic & Glassmorphism */
+    .hero-contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 5%;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .contact-hero-form {
+      background: rgba(255, 255, 255, 0.1); 
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid var(--primary);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      color: white;
+    }
+
+    .contact-hero-form h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: white;
+      font-family: var(--font-h);
+    }
+
+    .contact-hero-form label {
+      display: block;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .contact-hero-form input, 
+    .contact-hero-form select, 
+    .contact-hero-form textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px;
+      margin-bottom: 1.2rem;
+      border-radius: 0;
+    }
+
+    .contact-hero-form input:focus {
+      border-color: var(--primary);
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-hero-form option { background: #111; color: white; }
+
+    /* Remove "View Project" overlay on Info Cards */
+    .info-section .card::after {
+      display: none !important;
+      content: none !important;
+    }
+    .info-section .card:hover::after {
+      opacity: 0 !important;
+    }
+
+    @media (max-width: 992px) {
+      .hero-contact { grid-template-columns: 1fr; padding-top: 140px; text-align: center; }
+      .hero-content { text-align: center !important; }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <div class="logo">
+            <a href="index.html">
+              <img src="img/Secondary Logo.png" alt="Vision">
+            </a>
+          </div>
+          <button class="menu-toggle">☰</button>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle">🌙</button>
+        </div>
+      </header>
+
+  <section class="hero" style="min-height: 100vh; height: auto; padding: 100px 0; background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop'); background-attachment: fixed;">
+    <div class="hero-contact">
+      <div class="hero-content reveal" style="text-align: left;">
+        <p style="color: var(--primary); letter-spacing: 3px; font-weight: bold; margin-bottom: 1rem;">GET IN TOUCH</p>
+        <h1 style="font-size: clamp(3.5rem, 8vw, 5.5rem); line-height: 0.9; margin-bottom: 1.5rem;">Let's Build <br>Together</h1>
+        <p style="font-size: 1.1rem; color: rgba(255,255,255,0.8); max-width: 500px;">May ideya ka ba para sa iyong susunod na proyekto? Magpadala ng mensahe para sa libreng konsultasyon.</p>
+      </div>
+
+      <div class="contact-hero-form reveal">
+        <h2>Send Inquiry</h2>
+        <form action="https://formspree.io/f/mzdakdwr" method="POST">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" required placeholder="Juana Dela Cruz">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="_replyto" required placeholder="juana@email.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Project Category</label>
+            <select name="category" required>
+              <option value="" disabled selected>Pumili...</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Residential">Residential</option>
+              <option value="Infrastructure">Infrastructure</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" required placeholder="Ano ang maitutulong namin?" style="height: 100px; resize: none;"></textarea>
+          </div>
+
+          <input type="text" name="_gotcha" style="display:none">
+          <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem;">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="container info-section" style="padding: 100px 5%;">
+    <div class="grid grid-3">
+      <div class="card reveal" style="text-align: center; padding: 3rem;">
+        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">📍</div>
+        <h3>Bisitahin Kami</h3>
+        <p>123 Construction Ave, Building City</p>
+      </div>
+      <div class="card reveal" style="text-align: center; padding: 3rem;">
+        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">📞</div>
+        <h3>Tawagan Kami</h3>
+        <p>+1 (234) 567-8900</p>
+      </div>
+      <div class="card reveal" style="text-align: center; padding: 3rem;">
+        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;">✉️</div>
+        <h3>Email Us</h3>
+        <p>info@vision.com</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About VISION</h4>
+          <p>Leading construction company dedicated to excellence and innovation in every project built since 2010.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li>Commercial Construction</li>
+            <li>Residential Projects</li>
+            <li>Infrastructure</li>
+            <li>Renovations</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li>Email: info@vision.com</li>
+            <li>Phone: +1 (234) 567-8900</li>
+            <li>123 Construction Ave, City</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 VISION Construction Co. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="interactions.js"></script>
+</body>
+</html>
+ 

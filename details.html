@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Details | VISION Construction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <!-- reuse your header -->
+  </header>
+
+  <section class="hero-small">
+    <div class="hero-content">
+      <h1 id="detail-title"></h1>
+      <p id="detail-description"></p>
+    </div>
+  </section>
+
+  <section class="container">
+    <img id="detail-image" class="img-responsive rounded" alt="">
+    <div id="detail-extra"></div>
+  </section>
+
+  <footer>
+    <!-- reuse your footer -->
+  </footer>
+
+  <script>
+    const services = {
+      commercial: {
+        title: "Commercial Construction",
+        description: "High-quality commercial projects tailored to client needs.",
+        image: "img/commercial.jpg",
+        extra: "<p>We specialize in office buildings, retail spaces, and industrial facilities with modern design and efficiency.</p>"
+      },
+      residential: {
+        title: "Residential Projects",
+        description: "Building homes with care, precision, and modern design.",
+        image: "img/residential.jpg",
+        extra: "<p>From single-family homes to condominiums, we deliver comfort and style for every homeowner.</p>"
+      },
+      infrastructure: {
+        title: "Infrastructure",
+        description: "Reliable infrastructure projects that support communities.",
+        image: "img/infrastructure.jpg",
+        extra: "<p>Roads, bridges, and public utilities built to last and serve generations.</p>"
+      },
+      renovations: {
+        title: "Renovations",
+        description: "Transforming spaces with innovative renovation solutions.",
+        image: "img/renovations.jpg",
+        extra: "<p>We breathe new life into existing structures with creative renovation strategies.</p>"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (id && services[id]) {
+      const data = services[id];
+      document.getElementById("detail-title").textContent = data.title;
+      document.getElementById("detail-description").textContent = data.description;
+      document.getElementById("detail-image").src = data.image;
+      document.getElementById("detail-image").alt = data.title;
+      document.getElementById("detail-extra").innerHTML = data.extra;
+    } else {
+      document.querySelector(".hero-content").innerHTML = "<h1>Service Not Found</h1><p>Please go back and select a valid service.</p>";
+    }
+  </script>
+</body>
+</html>

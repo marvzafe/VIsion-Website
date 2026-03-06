@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | VISION Construction</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <style>
+    /* Slider Styles with Enhanced Animations */
+    .slider-container {
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(255, 24, 23, 0.2);
+      background: #000;
+      animation: slideUp 0.8s ease-out;
+    }
+    #slider-wrapper {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      height: 500px;
+    }
+    #slider-wrapper img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    #slider-wrapper img:hover {
+      transform: scale(1.02);
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 24, 23, 0.7);
+      color: white;
+      border: none;
+      padding: 20px 15px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    .slider-btn:hover { 
+      background: var(--primary);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 24, 23, 0.6);
+    }
+    .prev { left: 10px; border-radius: 0 5px 5px 0; }
+    .next { right: 10px; border-radius: 5px 0 0 5px; }
+    .caption-bar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      color: white;
+      padding: 20px 15px;
+      font-size: 0.95rem;
+      text-align: center;
+      font-style: italic;
+      animation: slideUp 0.6s ease-out;
+    }
+    table td { border-bottom: 1px solid var(--border); }
+    
+    /* Feature Cards Animation */
+    .feature-card {
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(255, 24, 23, 0.1), transparent);
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: slideFromLeft 0.6s ease-out;
+    }
+    .feature-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 20px rgba(255, 24, 23, 0.15);
+      background: linear-gradient(135deg, rgba(255, 24, 23, 0.15), rgba(255, 24, 23, 0.05));
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo"><a href="index.html"><img src="img/Secondary Logo.png" alt="Vision"></a></div>
+      <button class="menu-toggle">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <section id="dynamic-hero" class="hero" style="height: 65vh; background-size: cover; background-position: center;">
+    <div class="hero-content reveal">
+      <p id="prod-category-label" style="color: var(--primary); letter-spacing: 3px; text-transform: uppercase; font-weight: bold;"></p>
+      <h1 id="prod-title-main">Loading Product...</h1>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="grid" style="grid-template-columns: 2fr 1fr; align-items: start; gap: 40px;">
+      <div class="reveal">
+        <a href="products.html" style="text-decoration: none; color: var(--primary); font-weight: bold; margin-bottom: 20px; display: inline-block;">← BACK TO PRODUCTS</a>
+        
+        <h2 style="margin-bottom: 20px;">Product Overview</h2>
+        <div id="prod-description" style="line-height: 1.8; color: var(--text-alt);"></div>
+
+        <div class="slider-container">
+          <div id="slider-wrapper"></div>
+          <button class="slider-btn prev" onclick="moveSlide(-1)">❮</button>
+          <button class="slider-btn next" onclick="moveSlide(1)">❯</button>
+          <div class="caption-bar" id="prod-img-caption"></div>
+        </div>
+
+        <h3 style="animation: slideFromLeft 0.6s ease-out;">Key Features</h3>
+        <ul id="prod-features" style="margin: 20px 0; padding-left: 20px; line-height: 2; list-style: none;"></ul>
+        
+        <div style="margin-top: 40px; padding: 25px; background: linear-gradient(135deg, rgba(255, 24, 23, 0.08), transparent); border-radius: 8px; border-left: 4px solid var(--primary); animation: slideUp 0.8s ease-out;">
+          <h3 style="color: var(--primary); margin-bottom: 15px;">Why Choose This Product?</h3>
+          <p style="color: var(--text-alt); line-height: 1.8;">
+            This premium product is engineered for durability, sustainability, and aesthetic excellence. Perfect for commercial, industrial, and residential applications requiring superior performance and reliability.
+          </p>
+        </div>
+      </div>
+
+      <aside class="reveal">
+        <div class="card hover-lift glow-element" style="padding: 30px; border-top: 5px solid var(--primary); position: sticky; top: 120px; background: var(--card-bg); box-shadow: 0 10px 30px rgba(255, 24, 23, 0.1); animation: slideFromRight 0.8s ease-out;">
+          <h3 style="margin-bottom: 20px; color: var(--primary);">Product Specifications</h3>
+          <table style="width: 100%; border-collapse: collapse;">
+            <tbody>
+              <tr style="transition: all 0.3s ease;"><td style="padding: 15px 0; font-weight: bold;">SKU:</td><td id="spec-sku" style="text-align: right; font-weight: 600;"></td></tr>
+              <tr style="transition: all 0.3s ease;"><td style="padding: 15px 0; font-weight: bold;">Material:</td><td id="spec-material" style="text-align: right; font-weight: 600;"></td></tr>
+              <tr style="transition: all 0.3s ease;"><td style="padding: 15px 0; font-weight: bold;">Status:</td><td id="spec-status" style="text-align: right; font-weight: 600;"></td></tr>
+              <tr style="transition: all 0.3s ease;"><td style="padding: 15px 0; font-weight: bold;">Warranty:</td><td id="spec-warranty" style="text-align: right; font-weight: 600;"></td></tr>
+            </tbody>
+          </table>
+          <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 30px; display: block; text-decoration: none;">Request Quote</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-bottom" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border);">
+      <p>&copy; 2026 VISION Construction. Engineering the Future.</p>
+    </div>
+  </footer>
+
+  <script>
+    const productDatabase = {
+      "steel": {
+        title: "Structural Steel Beams",
+        category: "Supplies",
+        heroImg: "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?q=80",
+        description: "<p>Industrial grade steel for high-rise frameworks.</p>",
+        images: [
+          "https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?q=80",
+          "https://cdn-icons-png.flaticon.com/512/1000/1000966.png"
+        ],
+        caption: "Gallery: Steel beams and framework.",
+        features: ["High Tensile", "ASTM A36", "Corrosion Resistant"],
+        specs: { sku: "V-STEEL-001", material: "Steel", status: "In Stock", warranty: "15 Years" }
+      },
+      "concrete": {
+        title: "Ready-Mix Concrete",
+        category: "Materials",
+        heroImg: "https://images.unsplash.com/photo-1533044309907-0fa3413da946?q=80",
+        description: "<p>High-compression concrete for foundations.</p>",
+        images: [
+          "https://images.unsplash.com/photo-1533044309907-0fa3413da946?q=80",
+          "https://cdn-icons-png.flaticon.com/512/3655/3655611.png"
+        ],
+        caption: "Gallery: Concrete mixing and pouring.",
+        features: ["4500 PSI", "Fast Curing", "Eco-Friendly"],
+        specs: { sku: "V-CONC-450", material: "Portland", status: "Available", warranty: "5 Years" }
+      },
+      "installation": {
+        title: "Professional Installation Services",
+        category: "Services",
+        heroImg: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80",
+        description: "<p>Expert installation services for all construction materials and systems with guaranteed quality and timely completion.</p>",
+        images: [
+          "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80",
+          "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80"
+        ],
+        caption: "Gallery: Professional installation services.",
+        features: ["Expert Technicians", "Quality Assurance", "On-time Delivery"],
+        specs: { sku: "V-INST-PRO", material: "Various", status: "Available", warranty: "2 Years" }
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    let currentSlide = 0;
+
+    if (id && productDatabase[id]) {
+      const data = productDatabase[id];
+      document.title = `${data.title} | VISION`;
+      document.getElementById('prod-title-main').innerText = data.title;
+      document.getElementById('prod-category-label').innerText = data.category;
+      document.getElementById('prod-description').innerHTML = data.description;
+      document.getElementById('prod-img-caption').innerText = data.caption;
+            // Hero Image
+      document.getElementById('dynamic-hero').style.backgroundImage =
+        `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${data.heroImg}')`;
+
+      // Specs Table
+      document.getElementById('spec-sku').innerText = data.specs.sku;
+      document.getElementById('spec-material').innerText = data.specs.material;
+      document.getElementById('spec-status').innerText = data.specs.status;
+      document.getElementById('spec-warranty').innerText = data.specs.warranty;
+
+      // Features List
+      const featuresList = document.getElementById('prod-features');
+      data.features.forEach(feat => {
+        let li = document.createElement('li');
+        li.innerText = feat;
+        featuresList.appendChild(li);
+      });
+
+      // Slider Initialization
+      const wrapper = document.getElementById('slider-wrapper');
+      data.images.forEach(imgUrl => {
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        wrapper.appendChild(img);
+      });
+    } else {
+      document.getElementById('prod-title-main').innerText = "Product Not Found";
+      setTimeout(() => { window.location.href = 'products.html'; }, 3000);
+    }
+
+    // Slider Controls
+    function moveSlide(direction) {
+      const wrapper = document.getElementById('slider-wrapper');
+      const totalSlides = wrapper.children.length;
+      currentSlide += direction;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+  </script>
+  <script src="script.js"></script>
+  <script src="interactions.js"></script>
+  <script src="detail-interactions.js"></script>
+</body>
+</html>

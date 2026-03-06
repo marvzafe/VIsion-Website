@@ -1,0 +1,683 @@
+/* ============================================
+   VISION - International Construction Co.
+   PREMIUM ANIMATIONS & INTERACTIONS
+   ============================================ */
+
+   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Bebas+Neue&display=swap');
+   
+   /* Advanced Keyframe Animations */
+   @keyframes slideInDown {
+     from { transform: translateY(-50px); opacity: 0; }
+     to { transform: translateY(0); opacity: 1; }
+   }
+   
+   @keyframes slideInUp {
+     from { transform: translateY(50px); opacity: 0; }
+     to { transform: translateY(0); opacity: 1; }
+   }
+   
+   @keyframes scaleIn {
+     from { transform: scale(0.9); opacity: 0; }
+     to { transform: scale(1); opacity: 1; }
+   }
+   
+   @keyframes pulse {
+     0%, 100% { box-shadow: 0 0 0 0 rgba(255, 24, 23, 0.7); }
+     50% { box-shadow: 0 0 0 10px rgba(255, 24, 23, 0); }
+   }
+   
+   @keyframes float {
+     0%, 100% { transform: translateY(0px); }
+     50% { transform: translateY(-10px); }
+   }
+   
+   @keyframes shimmer {
+     0% { background-position: -1000px 0; }
+     100% { background-position: 1000px 0; }
+   }
+   
+   @keyframes rotate {
+     from { transform: rotate(0deg); }
+     to { transform: rotate(360deg); }
+   }
+
+   :root {
+     /* Brand Identity */
+     --primary: #FF1817;        
+     --primary-dark: #C20100;
+     --dark: #111111;           
+     --light: #FFFFFF;
+     
+     /* Fonts */
+     --font-h: 'Bebas Neue', sans-serif;
+     --font-b: 'DM Sans', sans-serif;
+   
+     /* Theme: Light Mode */
+     --bg: #FFFFFF;
+     --bg-alt: #F8F8F8;
+     --text: #111111;
+     --text-alt: #555555;
+     --border: #DDDDDD;
+     --card: #FFFFFF;
+     --header-bg: rgba(255, 255, 255, 0.15); /* Glass Background */
+     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+   }
+   
+   /* Theme: Dark Mode Overrides */
+   [data-theme="dark"] {
+     --bg: #0D0D0D;
+     --bg-alt: #161616;
+     --text: #FFFFFF;
+     --text-alt: #AAAAAA;
+     --border: #262626;
+     --card: #161616;
+     --header-bg: rgba(0, 0, 0, 0.25); /* Dark Glass Background */
+   }
+   
+   /* ============================================
+      Base Styles & Reset
+      ============================================ */
+   * { margin: 0; padding: 0; box-sizing: border-box; }
+   html { scroll-behavior: smooth; }
+   body { 
+     font-family: var(--font-b); 
+     background: var(--bg); 
+     color: var(--text); 
+     line-height: 1.6; 
+     transition: background 0.5s ease;
+     overflow-x: hidden;
+   }
+   a { text-decoration: none; color: inherit; transition: var(--transition); }
+   ul { list-style: none; }
+   img { max-width: 100%; display: block; }
+   
+   h1, h2, h3, h4, .btn, .brand-name, nav a { 
+     font-family: var(--font-h); 
+     text-transform: uppercase; 
+     letter-spacing: 1px; 
+   }
+   h1 { font-size: clamp(3.5rem, 10vw, 6rem); line-height: 0.85; margin-bottom: 1.5rem; }
+   h2 { font-size: clamp(2.5rem, 6vw, 3.5rem); border-left: 10px solid var(--primary); padding-left: 20px; margin-bottom: 2.5rem; }
+   
+   .section-header {
+     text-align: center;
+     margin-bottom: 4rem;
+     animation: slideInDown 0.8s ease-out;
+   }
+   
+   .section-header h2 {
+     border: none;
+     padding: 0;
+     display: inline-block;
+     position: relative;
+     margin-bottom: 1rem;
+   }
+   
+   .section-header h2::after {
+     content: '';
+     position: absolute;
+     bottom: -10px;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 80px;
+     height: 4px;
+     background: var(--primary);
+     border-radius: 2px;
+   }
+   
+   .section-header p {
+     font-size: 1.1rem;
+     color: var(--text-alt);
+     margin-top: 1.5rem;
+   }
+   /* --- 1. Our Projects (btn-primary) --- */
+.btn-primary {
+  background-color: var(--primary); /* Red base */
+  color: white;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: transparent !important;
+  color: var(--primary) !important;
+}
+
+/* --- 2. Contact Us (btn-outline) --- */
+
+.btn-outline:hover, .btn-primary:hover {
+  background-color: var(--primary) !important;
+  color: white !important;
+  border-color: var(--primary) !important;
+}
+   /* ============================================
+      Header & Navigation (Glassmorphism Restored)
+      ============================================ */
+      header { 
+        background: var(--header-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-bottom: 5px solid var(--primary); 
+        position: fixed; 
+        width: 100%;
+        top: 0; 
+        left: 0; /* Siguraduhin na naka-align sa kaliwa */
+        z-index: 9999 !important; /* Itaas ang priority para hindi matakpan */
+        padding: 0.5rem 0;
+        transition: all 0.3s ease;
+      }
+   
+   /* Change style when scrolled */
+  /* LIGHT MODE SCROLLED */
+header.scrolled {
+  background: rgba(255, 255, 255, 0.7) !important; /* Transparent pa rin */
+  padding: 0.2rem 0;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* DARK MODE SCROLLED */
+[data-theme="dark"] header.scrolled {
+  background: rgba(13, 13, 13, 0.7) !important; /* Transparent dark */
+}
+   
+   .header-container { 
+     display: flex; justify-content: space-between; align-items: center; 
+     max-width: 1800px; margin: auto; padding: 0.5rem 5%; height: 70px;
+   }
+   
+   /* LOGO - Clean (No Hover Animation) */
+   .logo a { display: flex; align-items: center; gap: 12px; }
+   .logo img { height: 90px; width: auto; transition: none; }
+   .logo:hover img { transform: none !important; }
+   .logo a::after { display: none !important; content: none !important; }
+   
+   [data-theme="dark"] .logo img { filter: brightness(0) invert(1); }
+   
+   nav ul { display: flex; gap: 2.5rem; }
+   nav a { 
+     font-size: 1.25rem; 
+     position: relative; 
+     color: var(--text);
+     transition: all 0.3s ease;
+   }
+   
+   /* Dynamic Active Link Styling */
+   nav a:hover, nav a.active { 
+     color: var(--primary) !important;
+     transform: translateY(-2px);
+   }
+   
+   nav a::after {
+     content: ''; 
+     position: absolute; 
+     bottom: -5px; 
+     left: 0; 
+     width: 0; 
+     height: 3px;
+     background: linear-gradient(90deg, var(--primary), transparent);
+     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   }
+   nav a.active::after, nav a:hover::after { 
+     width: 100%; 
+   }
+   
+   /* ============================================
+      Theme Toggle (Interactive Hover)
+      ============================================ */
+   .theme-toggle {
+     background: transparent; border: 2px solid var(--primary); color: var(--primary);
+     width: 45px; height: 45px; border-radius: 50%; cursor: pointer;
+     display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+   
+   .theme-toggle:hover {
+     background: var(--primary); color: white;
+     transform: rotate(15deg) scale(1.1);
+     box-shadow: 0 0 15px var(--primary);
+   }
+   
+   [data-theme="dark"] .theme-toggle:hover {
+     background: #f1c40f; border-color: #f1c40f;
+     box-shadow: 0 0 15px #f1c40f;
+   }
+   /* Filter Buttons Styling */
+.filter-btn {
+  padding: 10px 25px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+
+
+
+
+/* Animation for Filtering */
+.product-card.hide {
+  display: none;
+}
+   /* ============================================
+      Hero Section & Slideshow
+      ============================================ */
+   .hero { 
+     height: 100vh; 
+     position: relative; display: flex; align-items: center; 
+     justify-content: center; text-align: center; color: white; overflow: hidden;
+   }
+   
+   .hero-slideshow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+   
+   .slide {
+     position: absolute; width: 100%; height: 100%; background-size: cover;
+     background-position: center; opacity: 0; animation: slideLoop 18s linear infinite;
+   }
+   
+   .slide:nth-child(1) { animation-delay: 0s; }
+   .slide:nth-child(2) { animation-delay: 6s; }
+   .slide:nth-child(3) { animation-delay: 12s; }
+   
+   @keyframes slideLoop {
+     0% { opacity: 0; transform: scale(1); }
+     5% { opacity: 1; }
+     33% { opacity: 1; }
+     38% { opacity: 0; }
+     100% { opacity: 0; transform: scale(1.1); }
+   }
+   
+   .hero-content { position: relative; z-index: 2; }
+   
+   /* ============================================
+      Interactive Cards (VIEW PROJECT)
+      ============================================ */
+   .container { max-width: 1300px; margin: auto; padding: 100px 20px; }
+   .grid { display: grid; gap: 3rem; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+   .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+   .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+   .grid-4 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+   
+   
+   .card { 
+     background: var(--card); border: 1px solid var(--border); 
+     position: relative; overflow: hidden; transition: var(--transition);
+   }
+   
+   .card-image-wrapper { position: relative; overflow: hidden; background: var(--dark); display: block; }
+   .card-image { width: 100%; height: 320px; object-fit: cover; transition: 0.6s ease; }
+   
+   .card { 
+     animation: slideInUp 0.6s ease-out;
+   }
+   
+   .card:hover { 
+     transform: translateY(-15px) rotateX(5deg); 
+     border-color: var(--primary); 
+     box-shadow: 0 30px 60px rgba(255, 24, 23, 0.3);
+     animation: pulse 2s infinite;
+   }
+
+   .card:hover .card-image { 
+     transform: scale(1.15); 
+     filter: brightness(40%) saturate(1.2);
+   }
+   
+   /* CSS FIX: Remove VIEW PROJECT from Info Cards */
+   .info-section .card::after, .grid-3 .card::after { display: none !important; }
+   
+   /* ============================================
+      Scroll Reveal Animation
+      ============================================ */
+   .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s all ease-out; }
+   .reveal.active { opacity: 1; transform: translateY(0); }
+   
+   /* ============================================
+      Footer
+      ============================================ */
+   footer { background: #080808; color: #777; padding: 80px 5% 30px; border-top: 5px solid var(--primary); }
+   .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1300px; margin: auto; }
+   footer h4 { color: white; font-size: 1.8rem; margin-bottom: 2rem; position: relative; }
+   footer h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; background: var(--primary); }
+   
+   .footer-bottom {
+    padding: 20px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .footer-bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Itutulak ang mga items sa dulo at gitna */
+    max-width: 1800px; /* Kaparehas ng header mo */
+    margin: auto;
+    position: relative;
+  }
+  
+  /* Siguraduhin na ang text ay nasa kaliwa */
+  .copyright-text {
+    flex: 1; 
+    text-align: left;
+  }
+  
+  /* Ang social links ang magiging "Absolute Center" */
+  .social-links {
+    display: flex;
+    gap: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* I-center sa gitna ng buong container */
+  }
+  
+  .social-links a {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #777;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    border-color: var(--primary);
+  }
+  
+  /* Empty spacer para sa layout balance */
+  .footer-spacer {
+    flex: 1;
+  }
+  
+  /* Mobile: Pag-isack sila para hindi mag-overlap */
+  @media (max-width: 992px) {
+    .footer-bottom-container {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .social-links {
+      position: static;
+      transform: none;
+      order: -1; /* Icons muna bago text sa mobile */
+    }
+    .copyright-text {
+      text-align: center;
+    }
+  }
+   /* ============================================
+      Mobile Responsiveness
+      ============================================ */
+   .menu-toggle { display: none; background: none; border: none; font-size: 2.5rem; color: var(--text); cursor: pointer; }
+   
+   @media (max-width: 992px) {
+     .menu-toggle { display: block; }
+     nav {
+       position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+       background: var(--bg); z-index: 2000; padding: 100px 40px; transition: 0.5s ease;
+     }
+     nav.active { right: 0; }
+     nav ul { flex-direction: column; gap: 2rem; }
+     nav a { font-size: 2rem; }
+   }
+   /* Specialized styling para sa Service Cards */
+.service-card {
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top: 4px solid var(--primary); /* Pula sa itaas */
+  transition: all 0.4s ease;
+}
+
+.service-card i {
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover {
+  background: var(--primary);
+  color: white !important;
+}
+
+.service-card:hover i {
+  color: white !important;
+  transform: scale(1.2) rotate(10deg);
+}
+
+.service-card:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Glass effect for hero small */
+.hero-small {
+  margin-top: 80px; /* Para hindi matakpan ng fixed header */
+}
+/* Para sa mga sub-pages na walang slideshow pero hero ang gamit */
+section.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh; /* Mas maikli sa main home page */
+  margin-top: 0;
+  padding-top: 100px; /* Space para sa fixed header */
+  color: white;
+  position: relative;
+}
+
+/* Siguraduhin na ang container ay may sapat na margin mula sa fixed header */
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+/* Layout para sa grid ng products */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 40px;
+}
+/* Explosion View Styles */
+.explosion-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border);
+}
+
+.product-part {
+  position: absolute;
+  width: 320px; /* Adjust based on your image size */
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  z-index: 5;
+}
+
+.product-part img {
+  width: 100%;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+/* Explosion Positions - Kapag naka-active ang 'exploded' class */
+.explosion-container.exploded .part-top { transform: translateY(-120px) scale(1.05); }
+.explosion-container.exploded .part-mid { transform: scale(1); opacity: 0.8; }
+.explosion-container.exploded .part-bottom { transform: translateY(120px) scale(0.95); }
+
+/* Hover highlight */
+.product-part:hover {
+  z-index: 10;
+  filter: brightness(1.2);
+}
+
+/* Description Overlay */
+#part-info-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--primary);
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 250px;
+  display: none;
+  z-index: 20;
+  font-size: 0.85rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+section.about-services .card::after { content: 'VIEW'; }
+/* Default card overlay */
+
+.btn {
+  position: relative;
+  z-index: 20;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .btn {
+  transform: scale(1.1);
+  background: var(--primary);
+  color: white;
+}
+.card-content .btn {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease;
+  opacity: 0;              /* hidden by default */
+  transform: translateY(20px); /* slightly pushed down */
+}
+
+.product-card:hover .btn {
+  opacity: 1;              /* fade in */
+  transform: translateY(0); /* slide up */
+}
+
+.product-card:hover .btn:hover {
+  background: transparent;
+  color: var(--primary);
+}
+.card-content .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  background: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  border: 2px solid var(--primary);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.product-card:hover .btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.product-card:hover .btn:hover {
+  background: transparent;
+  color: var(--primary);
+}
+
+/* ============================================
+   Form Enhancements
+   ============================================ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   Loading Animation
+   ============================================ */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+  h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
+  h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); padding-left: 15px; border-left: 5px solid var(--primary); }
+  
+  .grid[style*="grid-template-columns: 2fr 1fr"] {
+    grid-template-columns: 1fr !important;  /* Changes 2-column to 1-column */
+  }
+  
+  #slider-wrapper { height: 350px; }
+  .slider-btn { padding: 15px 12px; font-size: 18px; }
+  /* ... more tablet adjustments */
+}
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  h1 { font-size: clamp(2rem, 6vw, 2.8rem); }  /* Fluid sizing */
+  
+  .container { padding: 50px 12px; }  /* Smaller padding */
+  
+  /* Convert table to mobile-friendly layout */
+  table tr { 
+    display: flex; 
+    flex-direction: column; 
+    padding: 12px 0;
+  }
+  
+  table td:first-child { font-weight: bold; }
+  
+  .btn-primary { width: 100% !important; }  /* Full-width buttons */
+  
+  /* Responsive footer */
+  .footer-grid { grid-template-columns: 1fr; }
+}@media (max-width: 360px) {
+  h1 { font-size: 1.8rem; }
+  #slider-wrapper { height: 200px; }
+  .slider-btn { padding: 10px 6px; font-size: 14px; }
+}

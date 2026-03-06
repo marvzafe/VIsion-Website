@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | VISION Construction</title>
+  <meta name="description" content="Browse VISION's portfolio of completed construction projects">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <div class="logo">
+            <a href="index.html">
+              <img src="img/Secondary Logo.png" alt="Vision">
+            </a>
+          </div>
+          <button class="menu-toggle">☰</button>
+          <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="projects.html" class="active">Projects</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+          <button class="theme-toggle">🌙</button>
+        </div>
+      </header>
+
+  <section class="hero" style="min-height: 45vh; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80');">
+    <div class="hero-content reveal">
+      <p>Our Legacy in Steel & Concrete</p>
+      <h1>Our Projects & Services</h1>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="filter-wrapper reveal" style="display:flex;justify-content:center;gap:15px;margin-bottom:40px;">
+      <button class="filter-btn active" data-filter="all" onclick="filterProjects('all')">All</button>
+      <button class="filter-btn" data-filter="commercial" onclick="filterProjects('commercial')">Commercial</button>
+      <button class="filter-btn" data-filter="residential" onclick="filterProjects('residential')">Residential</button>
+      <button class="filter-btn" data-filter="infrastructure" onclick="filterProjects('infrastructure')">Infrastructure</button>
+      <button class="filter-btn" data-filter="services" onclick="filterProjects('services')">Services</button>
+    </div>
+
+    <div class="grid" id="projectGrid">
+        <div class="card project-card reveal" data-category="commercial">
+          <a href="project-details.html?id=skyline" class="card-link">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80" alt="Skyline Tower" class="card-image">
+            </div>
+          </a>
+          <div class="card-content">
+            <span class="card-meta">Commercial</span>
+            <h3 class="card-title">Skyline Tower</h3>
+            <p>A 50-story commercial landmark featuring sustainable smart-glass technology.</p>
+            <a href="project-details.html?id=skyline" class="btn-link" style="color: var(--primary); font-weight: bold;">VIEW DETAILS →</a>
+          </div>
+        </div>
+      
+        <div class="card project-card reveal" data-category="residential">
+          <a href="project-details.html?id=heritage" class="card-link">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80" alt="Heritage Estate" class="card-image">
+            </div>
+          </a>
+          <div class="card-content">
+            <span class="card-meta">Residential</span>
+            <h3 class="card-title">The Heritage Estate</h3>
+            <p>Luxury residential complex focusing on community-centric green spaces.</p>
+            <a href="project-details.html?id=heritage" class="btn-link" style="color: var(--primary); font-weight: bold;">VIEW DETAILS →</a>
+          </div>
+        </div>
+      
+        <div class="card project-card reveal" data-category="infrastructure">
+          <a href="project-details.html?id=unity" class="card-link">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?q=80" alt="Unity Bridge" class="card-image">
+            </div>
+          </a>
+          <div class="card-content">
+            <span class="card-meta">Infrastructure</span>
+            <h3 class="card-title">Unity Bridge</h3>
+            <p>Strategic bridge engineering connecting industrial hubs.</p>
+            <a href="project-details.html?id=unity" class="btn-link" style="color: var(--primary); font-weight: bold;">VIEW DETAILS →</a>
+          </div>
+        </div>
+
+        <div class="card project-card reveal" data-category="services">
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80" class="card-image" alt="Installation Service">
+          </div>
+          <div class="card-content">
+            <span class="card-meta">Services</span>
+            <h3 class="card-title">Professional Installation</h3>
+            <p>Expert installation services for all construction materials and systems.</p>
+            <a href="project-details.html?id=installation" class="btn-link" style="color: var(--primary); font-weight: bold;">VIEW DETAILS →</a>
+          </div>
+        </div>
+      </div>
+
+  </section>
+
+  <!-- Installation Services Section -->
+  <section style="background: var(--bg-alt); padding: 80px 20px; margin-top: 80px; border-radius: 10px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Installation Services</h2>
+        <p>Professional installation expertise for all your construction needs</p>
+      </div>
+
+      <div class="grid grid-3" style="gap: 2rem;">
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🧱</div>
+          <h3 style="border: none;">Material Installation</h3>
+          <p>Precise installation of structural materials, flooring, and finishing surfaces.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚙️</div>
+          <h3 style="border: none;">Systems Installation</h3>
+          <p>Professional setup of HVAC, electrical, plumbing, and utility systems.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🪟</div>
+          <h3 style="border: none;">Window & Door Installation</h3>
+          <p>Expert installation ensuring perfect fit, alignment, and weather-tight sealing.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎨</div>
+          <h3 style="border: none;">Finishing & Fixtures</h3>
+          <p>Installation of interior finishes, fixtures, and architectural details.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔌</div>
+          <h3 style="border: none;">Equipment Installation</h3>
+          <p>Professional installation of specialized equipment and machinery.</p>
+        </div>
+
+        <div class="card reveal" style="padding: 2.5rem; text-align: center;">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">✓</div>
+          <h3 style="border: none;">Quality Assurance</h3>
+          <p>Thorough inspection and testing to ensure all installations meet standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="padding: 0;">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About VISION</h4>
+          <p>Leading construction company dedicated to excellence and innovation in every project built since 2010.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li>Email: info@vision.com</li>
+            <li>Phone: +1 (234) 567-8900</li>
+            <li>123 Construction Ave, City</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 VISION Construction Co. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="interactions.js"></script>
+  <script>
+  // Project Filtering Logic with animation
+  function filterProjects(category) {
+    const projects = document.querySelectorAll('.project-card');
+    projects.forEach(project => {
+      project.style.transition = 'all 0.4s ease';
+      if (category === 'all' || project.dataset.category === category) {
+        project.style.display = 'block';
+        setTimeout(() => {
+          project.style.opacity = '1';
+          project.style.transform = 'translateY(0)';
+        }, 100);
+      } else {
+        project.style.opacity = '0';
+        project.style.transform = 'translateY(20px)';
+        setTimeout(() => project.style.display = 'none', 300);
+      }
+    });
+
+    // Update button states
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+      const filterValue = btn.getAttribute('data-filter');
+      if ((category === 'all' && filterValue === 'all') || filterValue === category) {
+        btn.classList.add('active');
+      }
+    });
+  }
+
+  // Back to top button
+  const backToTop = document.createElement('button');
+  backToTop.id = 'backToTop';
+  backToTop.innerHTML = '↑';
+  document.body.appendChild(backToTop);
+
+  backToTop.style.cssText = `
+    position: fixed; bottom: 30px; right: 30px;
+    background: var(--primary); color: white;
+    border: none; border-radius: 50%;
+    width: 45px; height: 45px;
+    display: none; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease; font-size: 20px; font-weight: bold;
+  `;
+
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

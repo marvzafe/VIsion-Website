@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VISION | International Construction Co.</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Extra Animations */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-in.active { opacity: 1; transform: translateY(0); }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+    }
+
+    .btn-outline { position: relative; overflow: hidden; }
+    .btn-outline::after {
+      content: "";
+      position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--primary);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    .btn-outline:hover::after { left: 0; }
+    .btn-outline:hover { color: white !important; }
+
+    /* Back-to-top button */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--primary); color: white;
+      border: none; border-radius: 50%;
+      width: 45px; height: 45px;
+      display: none; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    #backToTop:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="img/Secondary Logo.png" alt="Vision"></a>
+      </div>
+      <button class="menu-toggle">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-slideshow">
+      <div class="slide" style="background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80');"></div>
+      <div class="slide" style="background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('img/index img/28.png');"></div>
+      <div class="slide" style="background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('img/index img/35.png');"></div>
+    </div>
+    <div class="hero-content fade-in">
+      <p style="animation: slideFromLeft 0.8s ease-out;">YOU ENVISION, WE BUILD</p>
+      <h1 style="animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);" class="gradient-text">Vision International Construction</h1>
+      <div class="flex-center" style="gap:15px;margin-top:20px;display:flex;justify-content:center;animation: slideFromRight 0.8s ease-out;">
+        <a href="projects.html" class="btn btn-outline hover-lift magnetic-btn">Our Projects</a>
+        <a href="contact.html" class="btn btn-outline hover-lift magnetic-btn">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -->
+  <section class="container">
+    <div class="section-header fade-in">
+      <h2>Featured Projects</h2>
+      <p>Explore our most recent and impactful construction projects</p>
+    </div>
+    <div class="grid">
+      <div class="card fade-in hover-lift" data-card-3d>
+        <a href="projects.html">
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80" class="card-image image-hover" alt="Skyline Tower">
+          </div>
+        </a>
+        <div class="card-content">
+          <span class="card-meta" style="color: #FF1817;">Commercial</span>
+          <h3 class="card-title">Skyline Tower</h3>
+          <p>Modern skyscraper built with sustainable materials and innovative design.</p>
+          <a href="projects.html" class="btn-link underline-effect">Learn More →</a>
+        </div>
+      </div>
+      <div class="card fade-in hover-lift" data-card-3d>
+        <a href="projects.html">
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1503387762-592dee58c460?q=80" class="card-image image-hover" alt="Urban Complex">
+          </div>
+        </a>
+        <div class="card-content">
+          <span class="card-meta" style="color: #FF1817;">Industrial</span>
+          <h3 class="card-title">Urban Complex</h3>
+          <p>State-of-the-art facility focused on durability and modern industrial aesthetics.</p>
+          <a href="projects.html" class="btn-link underline-effect">Learn More →</a>
+        </div>
+      </div>
+      <div class="card fade-in hover-lift" data-card-3d>
+        <a href="project-details.html">
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1590644365607-1c5a519a7a37?q=80" class="card-image image-hover" alt="Luxury Residence">
+          </div>
+        </a>
+        <div class="card-content">
+          <span class="card-meta" style="color: #FF1817;">Residential</span>
+          <h3 class="card-title">The Horizon Villa</h3>
+          <p>A luxury residential project that redefines high-end living spaces.</p>
+          <a href="projects.html" class="btn-link underline-effect">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="container" style="padding: 100px 20px; text-align: center;">
+    <div class="section-header fade-in">
+      <h2>Our Impact</h2>
+    </div>
+    <div class="grid grid-4" style="gap: 3rem;">
+      <div class="card fade-in hover-lift glow-element" style="padding: 2rem; background: linear-gradient(135deg, #FF1817, #C20100); color: white; border: none;">
+        <div class="count-number" data-count="500" style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">0</div>
+        <h3 style="color: white; font-size: 1.2rem;">Projects Completed</h3>
+        <p style="color: rgba(255,255,255,0.8);">Delivering quality across industries</p>
+      </div>
+      <div class="card fade-in hover-lift glow-element" style="padding: 2rem; background: linear-gradient(135deg, #FF1817, #C20100); color: white; border: none;">
+        <div class="count-number" data-count="15" style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">0</div>
+        <h3 style="color: white; font-size: 1.2rem;">Years Experience</h3>
+        <p style="color: rgba(255,255,255,0.8);">Industry leadership since 2010</p>
+      </div>
+      <div class="card fade-in hover-lift glow-element" style="padding: 2rem; background: linear-gradient(135deg, #FF1817, #C20100); color: white; border: none;">
+        <div class="count-number" data-count="2000" style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">0</div>
+        <h3 style="color: white; font-size: 1.2rem;">Team Members</h3>
+        <p style="color: rgba(255,255,255,0.8);">Dedicated professionals</p>
+      </div>
+      <div class="card fade-in hover-lift glow-element" style="padding: 2rem; background: linear-gradient(135deg, #FF1817, #C20100); color: white; border: none;">
+        <div class="count-number" data-count="100" style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">0</div>
+        <h3 style="color: white; font-size: 1.2rem;">Client Satisfaction %</h3>
+        <p style="color: rgba(255,255,255,0.8);">Committed to excellence</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="container" style="background: var(--bg-alt); padding: 80px 20px; border-radius: 10px; margin: 100px 0;">
+    <div class="section-header fade-in">
+      <h2>Why Choose VISION?</h2>
+      <p>What sets us apart from the competition</p>
+    </div>
+    <div class="grid grid-3" style="gap: 2rem;">
+      <div class="card fade-in" style="padding: 2.5rem; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏆</div>
+        <h3>Award-Winning</h3>
+        <p>Recognized industry leader with multiple awards for innovation and quality</p>
+      </div>
+      <div class="card fade-in" style="padding: 2.5rem; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔒</div>
+        <h3>Safety First</h3>
+        <p>Zero-tolerance approach to safety with continuous training and monitoring</p>
+      </div>
+      <div class="card fade-in" style="padding: 2.5rem; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+        <h3>Innovation</h3>
+        <p>Cutting-edge technology and modern construction methods</p>
+      </div>
+      <div class="card fade-in" style="padding: 2.5rem; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌱</div>
+        <h3>Sustainability</h3>
+        <p>Committed to eco-friendly practices and green building standards</p>
+      </div>
+      <div class="card fade-in" style="padding: 2.5rem; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">⏰</div>
+        <h3>On-Time Delivery</h3>
+        <p>Meticulous project management ensuring timely completion</p>
+      </div>
+      <div class="card fade-in" style="padding: 2.5rem; text-align: center;">
+        <div style="font-size: 2.5rem; margin-bottom: 1rem;">💼</div>
+        <h3>Transparency</h3>
+        <p>Clear communication and honest pricing throughout projects</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section style="background: linear-gradient(135deg, #FF1817, #C20100); padding: 80px 20px; text-align: center; color: white;">
+    <div class="container fade-in">
+      <h2 style="color: white; border: none; padding: 0;">Ready to Start Your Project?</h2>
+      <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 2rem;">Let's build something extraordinary together</p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <a href="contact.html" class="btn" style="background: white; color: #FF1817; font-weight: bold; padding: 12px 30px;">Get Free Consultation</a>
+        <a href="projects.html" class="btn btn-outline" style="border-color: white; color: white; padding: 12px 30px;">View Our Work</a>
+      </div>
+    </div>
+  </section>
+
+      <!-- Footer -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>VISION</h4>
+          <p>Leading the construction industry with innovation, quality, and integrity in every brick we lay since 2010.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>123 Construction Ave, Building City</p>
+          <p>info@vision.com | +1 234 567 890</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <div class="copyright-text">
+            <p>&copy; 2026 VISION Construction OPC. All rights reserved.</p>
+          </div>
+          <div class="social-links">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="footer-spacer"></div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+    <script src="interactions.js"></script>
+    <script>
+      // Scroll reveal activation
+      const reveals = document.querySelectorAll('.fade-in');
+      const revealOnScroll = () => {
+        reveals.forEach(el => {
+          const windowHeight = window.innerHeight;
+          const elementTop = el.getBoundingClientRect().top;
+          if (elementTop < windowHeight - 100) el.classList.add('active');
+        });
+      };
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+
+      // Back to top button logic
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTop.style.display = 'flex';
+        } else {
+          backToTop.style.display = 'none';
+        }
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

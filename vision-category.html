@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Category | VISION Construction</title>
+  <meta name="description" content="Explore our product categories and solutions.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: 0.8s all ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Product category content */
+    .category-header {
+      background: linear-gradient(135deg, rgba(255,24,23,0.1), rgba(255,24,23,0.05));
+      padding: 60px 0;
+      margin-bottom: 60px;
+    }
+
+    .category-header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .category-header p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      color: var(--text-secondary);
+    }
+
+    /* Product grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .product-item {
+      border: 1px solid rgba(255,24,23,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: var(--bg);
+    }
+
+    .product-item:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: 0 20px 50px rgba(255,24,23,0.15);
+    }
+
+    .product-item-image {
+      width: 100%;
+      height: 250px;
+      background: rgba(255,24,23,0.08);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-item:hover .product-item-image img {
+      transform: scale(1.05);
+    }
+
+    .product-item-content {
+      padding: 25px;
+    }
+
+    .product-item h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .product-item p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .product-specs {
+      background: rgba(255,24,23,0.05);
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .product-specs h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .spec-item {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .spec-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      padding: 10px 15px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      background: #C20100;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255,24,23,0.3);
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 10px 15px;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .category-description {
+      background: linear-gradient(135deg, rgba(255,24,23,0.05), rgba(255,24,23,0.02));
+      padding: 40px;
+      border-radius: 8px;
+      margin-bottom: 60px;
+    }
+
+    .category-description h2 {
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .category-description p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .category-header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .category-header {
+        padding: 40px 0;
+        margin-bottom: 40px;
+      }
+
+      .category-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .category-description {
+        padding: 25px;
+      }
+
+      .product-item-image {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .category-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .category-header p {
+        font-size: 1rem;
+      }
+
+      .product-item-content {
+        padding: 15px;
+      }
+
+      .product-item h3 {
+        font-size: 1.1rem;
+      }
+
+      .product-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html"><img src="img/Secondary Logo.png" alt="VISION Construction Logo"></a>
+      </div>
+      <button class="menu-toggle">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- Category Header -->
+  <section class="category-header reveal">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="about.html">Product Lines</a>
+        <span>/</span>
+        <span id="breadcrumb-category">Category</span>
+      </div>
+      <h1 id="category-title">Loading...</h1>
+      <p id="category-subtitle">Discover our premium solutions</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Category Description -->
+    <section class="category-description reveal">
+      <h2>About This Category</h2>
+      <p id="category-full-description">Loading category information...</p>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="reveal">
+      <h2 style="margin-bottom: 40px; text-align: center; font-size: 2rem;">Featured Products</h2>
+      <div class="products-grid" id="products-container">
+        <p style="text-align: center; grid-column: 1/-1;">Loading products...</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- CTA -->
+  <section class="cta bg-primary text-white text-center reveal" style="margin-top: 80px;">
+    <div class="container">
+      <h2>Ready to Get Started?</h2>
+      <p>Contact our team for a consultation and discover how our products can benefit your project.</p>
+      <a href="contact.html" class="btn btn-outline-light">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid container">
+      <div><h4>About VISION</h4><p>Leading construction company dedicated to excellence and innovation.</p></div>
+      <div><h4>Quick Links</h4><ul><li><a href="about.html">About Us</a></li><li><a href="products.html">Products</a></li><li><a href="projects.html">Projects</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="products.html">Commercial Products</a></li><li><a href="products.html">Residential Solutions</a></li><li><a href="products.html">Industrial Products</a></li><li><a href="contact.html">Custom Solutions</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+1234567890">+1 (234) 567-8900</a></li><li><a href="mailto:info@vision.com">info@vision.com</a></li><li>123 Construction Ave<br>Building City, ST 12345</li></ul></div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2026 VISION Construction Co. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="script.js"></script>
+  <script src="interactions.js"></script>
+
+  <script>
+    // Product data for each category
+    const categoryData = {
+      sports: {
+        title: 'Vision Sports',
+        subtitle: 'Premium Sports Flooring Solutions',
+        description: 'Vision Sports offers world-class flooring solutions designed specifically for athletic facilities, gymnasiums, and recreational centers. Our products provide superior durability, excellent shock absorption, and optimal performance for professional and amateur athletes. Built with cutting-edge technology and premium materials, our sports flooring systems ensure safety, comfort, and longevity for any sports venue.',
+        products: [
+          {
+            name: 'Professional Court Flooring',
+            description: 'High-performance flooring for basketball and volleyball courts with superior ball response and athlete safety.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Material', value: 'Multi-layer composite' },
+              { label: 'Impact Absorption', value: '55-60%' },
+              { label: 'Thickness', value: '12-18mm' }
+            ]
+          },
+          {
+            name: 'Track & Field Surfaces',
+            description: 'Durable synthetic surfaces for running tracks and field events with optimal grip and energy return.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Material', value: 'Synthetic rubber' },
+              { label: 'Durability', value: '10+ years' },
+              { label: 'Temperature Range', value: '-40°C to 60°C' }
+            ]
+          },
+          {
+            name: 'Gym & Fitness Flooring',
+            description: 'Shock-absorbing flooring perfect for fitness centers, aerobic studios, and weight training areas.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Material', value: 'Rubber composite' },
+              { label: 'Sound Reduction', value: '75%' },
+              { label: 'Maintenance', value: 'Easy cleaning' }
+            ]
+          }
+        ]
+      },
+      care: {
+        title: 'Vision Care',
+        subtitle: 'Healthcare Facility Solutions',
+        description: 'Vision Care specializes in healthcare flooring designed to meet the rigorous demands of medical facilities. Our solutions prioritize hygiene, durability, and patient safety while maintaining the aesthetic standards required in modern healthcare environments. Every product is engineered to withstand heavy traffic, frequent cleaning, and sterilization processes.',
+        products: [
+          {
+            name: 'Hospital Ward Flooring',
+            description: 'Antimicrobial flooring designed for patient rooms and general wards with easy maintenance and safety features.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Antimicrobial', value: 'Yes' },
+              { label: 'Slip Resistance', value: 'High' },
+              { label: 'Sterilizable', value: 'Compatible' }
+            ]
+          },
+          {
+            name: 'Operating Room Surfaces',
+            description: 'Specialized flooring for surgical suites with contamination control and precision installation requirements.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Static Control', value: 'ESD compliant' },
+              { label: 'Bacterial Resistance', value: '99.9%' },
+              { label: 'Seam Strength', value: 'Reinforced' }
+            ]
+          },
+          {
+            name: 'Rehabilitation Center Flooring',
+            description: 'Cushioned flooring for therapy and rehabilitation areas with superior comfort and safety features.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Impact Protection', value: '70%' },
+              { label: 'Grip Quality', value: 'Superior' },
+              { label: 'Durability', value: '15+ years' }
+            ]
+          }
+        ]
+      },
+      walls: {
+        title: 'Vision Walls',
+        subtitle: 'Advanced Wall Systems',
+        description: 'Vision Walls delivers innovative cladding and wall system solutions that combine aesthetic appeal with functional excellence. Our products are engineered for modern architecture, offering flexibility in design, superior weather resistance, and easy installation. Whether for commercial or residential projects, Vision Walls provides the perfect exterior and interior solutions.',
+        products: [
+          {
+            name: 'Composite Wall Cladding',
+            description: 'Modern composite panels offering exceptional durability and diverse design options for contemporary architecture.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Material', value: 'Composite fiber' },
+              { label: 'Fire Rating', value: 'Class A' },
+              { label: 'Lifespan', value: '25+ years' }
+            ]
+          },
+          {
+            name: 'Acoustic Wall Systems',
+            description: 'Sound-dampening wall solutions perfect for offices, studios, and commercial spaces requiring noise control.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Sound Reduction', value: '45dB' },
+              { label: 'Thickness', value: '50-100mm' },
+              { label: 'Installation', value: 'Quick-fit system' }
+            ]
+          },
+          {
+            name: 'Interior Partition Walls',
+            description: 'Flexible partition systems for creating dynamic interior spaces in offices and commercial buildings.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Configuration', value: 'Modular' },
+              { label: 'Fire Resistance', value: '120 min' },
+              { label: 'Reusability', value: 'High' }
+            ]
+          }
+        ]
+      },
+      ceiling: {
+        title: 'Vision Ceiling',
+        subtitle: 'Premium Ceiling Solutions',
+        description: 'Vision Ceiling offers sophisticated ceiling systems that enhance indoor air quality, acoustic performance, and aesthetic appeal. Our range includes acoustic tiles, metal systems, and specialty solutions designed for commercial, residential, and industrial applications. Each product is engineered for ease of installation and maintenance.',
+        products: [
+          {
+            name: 'Acoustic Drop Ceiling',
+            description: 'Premium acoustic tiles for superior sound absorption and easy maintenance in commercial spaces.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'NRC Rating', value: '0.85' },
+              { label: 'Fire Rating', value: 'Class A' },
+              { label: 'Durability', value: '20+ years' }
+            ]
+          },
+          {
+            name: 'Metal Grid Ceiling',
+            description: 'Modern metal ceiling systems offering contemporary design and excellent durability for high-traffic areas.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Material', value: 'Aluminum' },
+              { label: 'Moisture Resistant', value: 'Yes' },
+              { label: 'Design Options', value: 'Multiple' }
+            ]
+          },
+          {
+            name: 'Suspended Ceiling Systems',
+            description: 'Versatile suspended systems allowing easy access to building systems and flexible reconfiguration.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Access Rating', value: 'Excellent' },
+              { label: 'Weight Capacity', value: '25kg/sqm' },
+              { label: 'Assembly Time', value: 'Fast' }
+            ]
+          }
+        ]
+      },
+      floors: {
+        title: 'Vision Floors',
+        subtitle: 'Comprehensive Flooring Solutions',
+        description: 'Vision Floors provides a comprehensive range of flooring solutions for residential and commercial applications. From durable rubber tiles to elegant vinyl systems, our products combine functionality with aesthetic excellence. Every flooring solution is designed for longevity, easy maintenance, and superior performance.',
+        products: [
+          {
+            name: 'Rubber Tiles',
+            description: 'Durable rubber flooring tiles perfect for commercial spaces, gyms, and industrial facilities with exceptional wear resistance.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Size', value: '500x500mm' },
+              { label: 'Thickness', value: '4-12mm' },
+              { label: 'Durability', value: '15+ years' }
+            ]
+          },
+          {
+            name: 'Vinyl Plank Flooring',
+            description: 'Waterproof vinyl planks offering the look of hardwood or tile with superior durability and easy installation.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Waterproof', value: 'Yes' },
+              { label: 'Installation', value: 'Click-lock system' },
+              { label: 'Warranty', value: '10 years' }
+            ]
+          },
+          {
+            name: 'Luxury Vinyl Tiles',
+            description: 'Premium vinyl tiles combining aesthetic sophistication with practical durability for high-end projects.',
+            image: '/placeholder.svg?height=250&width=300',
+            specs: [
+              { label: 'Design Range', value: '50+ options' },
+              { label: 'Slip Resistance', value: 'High' },
+              { label: 'Maintenance', value: 'Minimal' }
+            ]
+          }
+        ]
+      }
+    };
+
+    // Get category from URL
+    function getCategory() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('category') || 'sports';
+    }
+
+    // Render page content
+    function renderCategoryPage() {
+      const category = getCategory();
+      const data = categoryData[category];
+
+      if (!data) {
+        document.getElementById('category-title').textContent = 'Category Not Found';
+        return;
+      }
+
+      // Update header
+      document.getElementById('breadcrumb-category').textContent = data.title;
+      document.getElementById('category-title').textContent = data.title;
+      document.getElementById('category-subtitle').textContent = data.subtitle;
+      document.getElementById('category-full-description').textContent = data.description;
+
+      // Render products
+      const container = document.getElementById('products-container');
+      container.innerHTML = data.products.map(product => `
+        <div class="product-item reveal">
+          <div class="product-item-image">
+            <img src="${product.image}" alt="${product.name}">
+          </div>
+          <div class="product-item-content">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <div class="product-specs">
+              <h4>Specifications</h4>
+              ${product.specs.map(spec => `
+                <div class="spec-item">
+                  <span>${spec.label}:</span>
+                  <strong>${spec.value}</strong>
+                </div>
+              `).join('')}
+            </div>
+            <div class="product-actions">
+              <button class="btn-primary" onclick="requestQuote('${product.name}')">Request Quote</button>
+              <button class="btn-secondary" onclick="viewDetails('${product.name}')">Details</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Trigger reveal animations
+      revealOnScroll();
+    }
+
+    // Handle button actions
+    function requestQuote(productName) {
+      const category = getCategory();
+      window.location.href = `contact.html?product=${encodeURIComponent(productName)}&category=${category}`;
+    }
+
+    function viewDetails(productName) {
+      alert(`Details for: ${productName}\n\nMore detailed information coming soon!`);
+    }
+
+    // Scroll reveal animation
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) el.classList.add('active');
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCategoryPage();
+      revealOnScroll();
+    });
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

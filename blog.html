@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | VISION Construction</title>
+  <meta name="description" content="Read the latest insights and news from VISION Construction">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/Secondary Logo.png" alt="Vision">
+        </a>
+      </div>
+      <button class="menu-toggle">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&h=600&fit=crop');">
+    <div class="hero-content">
+      <h1>Our Blog</h1>
+      <p>Insights, updates, and industry expertise</p>
+    </div>
+  </section>
+
+  <!-- Blog Posts Section -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <h2>Latest Articles</h2>
+        <p>Stay updated with construction industry trends and VISION news</p>
+      </div>
+
+      <!-- Dynamic blog cards will be injected here -->
+      <div class="grid grid-2 mb-xl" id="blogGrid"></div>
+
+      <!-- Newsletter Signup -->
+      <section style="background-color: #f0f0f0; padding: 3rem; border-radius: 0.5rem; margin-top: 2rem;">
+        <div style="max-width: 600px; margin: 0 auto;">
+          <h3 style="text-align: center; margin-bottom: 1rem;">Subscribe to Our Newsletter</h3>
+          <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">Get the latest construction insights and company news delivered to your inbox</p>
+          <form style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <input type="email" placeholder="Your email address" required style="flex: 1; min-width: 200px;">
+            <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About VISION</h4>
+          <p>Leading construction company dedicated to excellence and innovation in every project.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Commercial Construction</a></li>
+            <li><a href="services.html">Residential Projects</a></li>
+            <li><a href="services.html">Infrastructure</a></li>
+            <li><a href="services.html">Renovations</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+1234567890">+1 (234) 567-8900</a></li>
+            <li><a href="mailto:info@vision.com">info@vision.com</a></li>
+            <li>123 Construction Ave<br>Building City, ST 12345</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 VISION Construction Co. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="interactions.js"></script>
+</body>
+</html>
